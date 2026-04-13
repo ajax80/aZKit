@@ -1,5 +1,3 @@
-# aZKit
-Apps that flow
 # aZKit                                                                                                                                                                                                           
                                          
   ## What It Does                                                                                                                                                                                                   
