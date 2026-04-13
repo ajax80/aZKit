@@ -1,0 +1,33 @@
+#!/bin/bash
+# CLI wrapper for the Blakbox assistant service
+
+if [ -z "$1" ]; then
+  echo "Usage: ask \"what you want to do\""
+  echo "Examples:"
+  echo "  ask \"check system health\""
+  echo "  ask \"search for Fedora 43 kernel updates\""
+  echo "  ask \"clean up disk space\""
+  exit 1
+fi
+
+query="$1"
+
+# Check if assistant service is running
+if ! curl -s http://localhost:5000/ask -X OPTIONS &>/dev/null; then
+  echo "⚠️  Assistant service not running. Starting it..."
+  systemctl start blakbox-assistant
+  sleep 2
+fi
+
+# Send request to assistant service
+response=$(curl -s http://localhost:5000/ask \
+  -H "Content-Type: application/json" \
+  -d "{\"ask\": \"$query\"}")
+
+# Parse and display response
+action=$(echo "$response" | jq -r '.action // "unknown"')
+result=$(echo "$response" | jq -r '.result // .error // "No result"')
+
+echo "→ Action: $action"
+echo ""
+echo "$result"
