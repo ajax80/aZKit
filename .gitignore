@@ -1,0 +1,33 @@
+# Logs                                                                                                                                                                                                            
+  /agents/logs/                                                                                                                                                                                                     
+  *.log                                                                                                                                                                                                             
+                                                                                                                                                                                                                    
+  # State/cache
+  /agents/state/                                                                                                                                                                                                    
+  /agents/events/                                           
+
+  # Environment
+  .env
+  .env.local
+
+  # API keys (keep these safe!)                                                                                                                                                                                     
+  .bashrc (if it has keys)
+                                                                                                                                                                                                                    
+  # System                                                  
+  .DS_Store                                                                                                                                                                                                         
+  *.swp                                                     
+  *.swo
+  *~
+
+  # Python
+  __pycache__/
+  *.pyc                                                                                                                                                                                                             
+   
+  # IDE                                                                                                                                                                                                             
+  .vscode/                                                  
+  .idea/
+  *.sublime-*
+
+  # Temp
+  /tmp/
+  *.tmp                  
